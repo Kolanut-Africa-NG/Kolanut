@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
 
           {/* Links columns */}
-          <div className="flex flex-1 flex-wrap gap-6 lg:gap-10 lg:justify-around">
+          <div className="flex flex-1 md:flex-row flex-col flex-wrap gap-6 lg:gap-10 lg:justify-around">
             {/* Kolanut Africa */}
             <motion.div
               variants={itemVariants}

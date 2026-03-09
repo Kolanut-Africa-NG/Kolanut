@@ -51,7 +51,7 @@ export default function KolanutWaySection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="flex flex-col gap-8 lg:flex-row lg:items-center"
+          className="flex flex-col gap-8 lg:flex-row lg:items-start"
         >
           {/* Left text */}
           <motion.div

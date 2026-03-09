@@ -42,7 +42,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="flex w-full md:items-end items-center min-h-screen"
+      className="flex w-full items-center md:min-h-screen min-h-[500px]"
       style={{
         background: `linear-gradient(0deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%), url('/images/hero-bg.jpg') center/cover no-repeat`,
       }}
@@ -88,13 +88,10 @@ export default function HeroSection() {
               variants={itemVariants}
               className="flex flex-wrap items-center gap-3 lg:gap-6 mt-2"
             >
-              <Button className="rounded-full bg-brand-red !py-2.5 !px-5 lg:!py-3 lg:!px-8 text-sm lg:text-base font-medium text-white !hover:bg-brand-red/90 h-auto">
+              <Button className="rounded-full bg-brand-red !py-3 !px-8 text-sm lg:text-base font-medium text-white !hover:bg-brand-red/90 h-auto">
                 Get Insured Now
               </Button>
-              <Button
-                variant="outline"
-                className="rounded-full border-white bg-transparent !py-2.5 !px-5 lg:!py-3 lg:!px-8 text-sm lg:text-base font-medium text-white !hover:bg-white/10 h-auto"
-              >
+              <Button className="rounded-full border border-white bg-transparent !py-3 !px-8 text-sm lg:text-base font-medium text-white !hover:bg-white/10 h-auto">
                 Learn More
               </Button>
             </motion.div>

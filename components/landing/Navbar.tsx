@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import LogoNavbar from "@/src/assets/icons/logo-navbar.svg";
-import ChevronDown from "@/src/assets/icons/chevron-down.svg";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -211,7 +210,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-transparent z-40 lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
 
@@ -221,31 +220,30 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="fixed top-16 lg:top-20 right-0 bottom-0 w-[280px] lg:w-[320px] bg-white z-50 lg:hidden shadow-2xl overflow-y-auto"
+              className="fixed top-16 lg:top-20 right-0 bottom-0 w-full lg:w-[360px] bg-brand-red z-50 lg:hidden shadow-2xl overflow-y-auto"
             >
-              <div className="px-5 py-6 flex flex-col gap-5">
+              <div className="flex py-4 flex-col">
                 <Link
                   href="/about"
-                  className={`text-base py-2 transition-colors ${
+                  className={`text-base py-4 px-6 transition-colors ${
                     isActive("/about")
-                      ? "text-brand-red font-medium"
-                      : "text-nav-text hover:text-brand-red"
+                      ? "bg-white text-brand-red font-medium"
+                      : "text-white hover:bg-white/10"
                   }`}
                 >
                   About Us
                 </Link>
 
                 {/* Mobile Get Insured with collapsible sub-items */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col">
                   <button
                     onClick={() => setMobileInsuredOpen(!mobileInsuredOpen)}
-                    className="flex items-center justify-between text-base text-nav-text font-medium py-2"
+                    className="flex items-center justify-between text-base text-white font-medium py-4 px-6"
                   >
                     <span>Get Insured</span>
                     <ChevronDown
-                      width={14}
-                      height={8}
-                      className={`text-nav-text transition-transform duration-200 ${
+                      size={20}
+                      className={`text-white transition-transform duration-200 ${
                         mobileInsuredOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -258,25 +256,16 @@ export default function Navbar() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
+                        className="overflow-hidden bg-white/10"
                       >
-                        <div className="flex gap-2 py-2 flex-wrap">
-                          {insuredSubItems.map(({ label, href, Icon }) => (
+                        <div className="flex flex-col py-2">
+                          {insuredSubItems.map(({ label, href }) => (
                             <Link
                               key={label}
                               href={href}
-                              className="flex flex-col items-center gap-1 p-2 rounded-lg border border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors text-gray-600 min-w-[70px] flex-1 sm:flex-none sm:min-w-[80px]"
+                              className="text-base text-white py-3 px-6 hover:bg-white/10 transition-colors"
                             >
-                              <Image
-                                alt={label}
-                                width={32}
-                                height={32}
-                                src={Icon}
-                                className="sm:w-10 sm:h-10"
-                              />
-                              <span className="text-xs font-medium">
-                                {label}
-                              </span>
+                              {label}
                             </Link>
                           ))}
                         </div>
@@ -289,22 +278,19 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className={`text-base py-2 transition-colors ${
+                    className={`text-base py-4 px-6 transition-colors ${
                       isActive(link.href)
-                        ? "text-brand-red font-medium"
-                        : "text-nav-text hover:text-brand-red"
+                        ? "bg-white text-brand-red font-medium"
+                        : "text-white hover:bg-white/10"
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
 
-                <div className="pt-2">
+                <div className="p-6 mt-2">
                   <Link href={"/login"}>
-                    <Button
-                      variant="outline"
-                      className="w-full rounded-full border-brand-red text-brand-red hover:bg-brand-red hover:text-white"
-                    >
+                    <Button className="w-full rounded-full bg-white text-brand-red hover:bg-gray-100 py-6 text-base font-medium">
                       Sign In
                     </Button>
                   </Link>

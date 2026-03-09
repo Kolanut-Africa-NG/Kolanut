@@ -223,10 +223,10 @@ const Faqs: React.FC = () => {
                       setActiveTab(tab);
                       setOpenIndex(0);
                     }}
-                    className={`tab-btn flex-1 text-left lg:px-3 py-2 md:py-3 text-sm font-medium whitespace-nowrap cursor-pointer ${
+                    className={`tab-btn flex-1 text-left lg:px-3 py-2 md:py-3 text-sm font-medium whitespace-nowrap cursor-pointer ${idx === 3 ? "border-none" : "lg:border-b-2"}  ${
                       activeTab === tab
-                        ? "text-primary font-semibold lg:border-b-2 lg:border-primary"
-                        : "text-[#4B5563] lg:border-b-2 lg:border-gray-100 hover:bg-gray-50"
+                        ? "text-primary font-semibold  lg:border-primary"
+                        : "text-[#4B5563] lg:border-gray-100 hover:bg-gray-50"
                     }`}
                     style={{
                       animationDelay: `${idx * 50}ms`,

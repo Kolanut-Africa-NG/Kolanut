@@ -90,7 +90,7 @@ export default function InsuranceProductsSection() {
               <motion.div
                 key={title}
                 variants={itemVariants}
-                className="flex flex-col items-center gap-3 lg:gap-4 border border-card-border bg-[#FFFFFF] py-4 lg:py-6 px-3 lg:px-4 text-center rounded-xl lg:rounded-2xl"
+                className="flex flex-col items-center gap-3 lg:gap-4  border-[#af060d]! !hover:border-2 bg-[#FFFFFF] py-4 lg:py-6 px-3 lg:px-4 text-center rounded-xl lg:rounded-2xl"
               >
                 <Icon width={50} height={50} style={{ color: "#af060d" }} />
                 <div className="flex flex-col gap-1.5 lg:gap-2">
