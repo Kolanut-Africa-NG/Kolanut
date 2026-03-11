@@ -22,7 +22,7 @@ export default function ConditionalWrapper({
   return (
     <>
       <Navbar />
-      <div className="py-20">{children}</div>
+      <div className="pt-20">{children}</div>
       <Footer />
     </>
   );

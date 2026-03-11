@@ -2,17 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LayoutGrid, Users, Shield, Banknote, FileKey, BadgeCheck, BookOpen, MessageCircleQuestionMark, Settings, LogOut } from "lucide-react";
 
 const navItems = [
-  { label: "Dashboard", icon: "/icons/admin/dashboard.svg", href: "/admin/dashboard" },
-  { label: "Customers", icon: "/icons/admin/customers.svg", href: "/admin/customers" },
-  { label: "Policies", icon: "/icons/admin/policies.svg", href: "/admin/policies" },
-  { label: "Transactions", icon: "/icons/admin/transactions.svg", href: "/admin/transactions" },
-  { label: "Claims", icon: "/icons/admin/claims.svg", href: "/admin/claims" },
-  { label: "Coupon", icon: "/icons/admin/coupon.svg", href: "/admin/coupon" },
-  { label: "Resources", icon: "/icons/admin/resources.svg", href: "/admin/resources" },
-  { label: "FAQs", icon: "/icons/admin/faqs.svg", href: "/admin/faqs" },
-  { label: "Settings", icon: "/icons/admin/settings.svg", href: "/admin/settings" },
+  { label: "Dashboard", icon: <LayoutGrid/>, href: "/admin/dashboard" },
+  { label: "Customers", icon: <Users/>, href: "/admin/customers" },
+  { label: "Policies", icon: <Shield/>, href: "/admin/policies" },
+  { label: "Transactions", icon: <Banknote/>, href: "/admin/transactions" },
+  { label: "Claims", icon: <FileKey/>, href: "/admin/claims" },
+  { label: "Coupon", icon: <BadgeCheck/>, href: "/admin/coupon" },
+  { label: "Resources", icon: <BookOpen/>, href: "/admin/resources" },
+  { label: "FAQs", icon: <MessageCircleQuestionMark/>, href: "/admin/faqs" },
+  { label: "Settings", icon: <Settings/>, href: "/admin/settings" },
 ];
 
 export default function AdminSidebar() {
@@ -25,7 +26,7 @@ export default function AdminSidebar() {
     >
       {/* Logo */}
       <div className="px-4 py-6">
-        <img src="/icons/admin/logo.svg" alt="Kolanut" className="h-9 w-auto" />
+        <img src="/images/LogoFooter.svg" alt="Kolanut" className="h-9 w-auto" />
       </div>
 
       {/* Nav Items */}
@@ -47,16 +48,16 @@ export default function AdminSidebar() {
               }}
             >
               <span
-                className="flex items-center justify-center shrink-0"
+                className="flex items-center justify-center shrink-0 text-xl"
                 style={{
                   width: 18,
                   height: 18,
-                  border: isActive ? "1.5px solid #af060d" : "1.5px solid #ffffff",
-                  borderRadius: 2,
+                  
+                 
                   padding: 0,
                 }}
               >
-                <img src={item.icon} alt={item.label} style={{ width: 14, height: 14, filter: "brightness(0) invert(1)" }} />
+                {item.icon}
               </span>
               {item.label}
             </Link>
@@ -80,7 +81,7 @@ export default function AdminSidebar() {
               className="flex items-center justify-center shrink-0"
               style={{ width: 18, height: 18, border: "1.5px solid #ffffff", borderRadius: 2 }}
             >
-              <img src="/icons/admin/logout.svg" alt="Log out" style={{ width: 14, height: 14, filter: "brightness(0) invert(1)" }} />
+             <LogOut/>
             </span>
             Log out
           </Link>

@@ -29,7 +29,7 @@ export default function LicensingPartnership() {
 
   return (
     <section className="bg-page-bg py-12 md:py-20">
-      <div className="mx-auto w-full px-4 md:px-10">
+      <div className="mx-auto w-full px-4 md:px-20">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -42,11 +42,13 @@ export default function LicensingPartnership() {
           </h2>
 
           {/* Partner logos */}
-          <img
-            src="/images/partner-logos.svg"
-            alt="Novarick licensing partnership logos"
-            className="h-[40px] w-auto md:h-[50px] lg:h-[60px]"
-          />
+          <div className="flex justify-center items-center gap-6 flex-wrap">
+            <img src="/images/logo/novarick.svg" alt="Novarick Logo" />
+            <img src="/images/logo/finebricks.svg" alt="Finebricks Logo" />
+            <img src="/images/logo/SELLERRAND.svg" alt="SELLERRAND Logo" />
+            <img src="/images/logo/thesaurus.svg" alt="Thesaurus Logo" />
+          </div>
+         
 
           {/* Description */}
           <p className="text-base md:text-lg lg:text-2xl font-normal text-body-text max-w-[800px] lg:max-w-[900px]">

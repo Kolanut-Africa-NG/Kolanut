@@ -101,40 +101,40 @@ api.interceptors.response.use(
 // Type-safe API methods
 export const apiClient = {
   get: <T>(url: string) =>
-    api.get<ApiResponse<T>>(url).then((response) => response.data),
+    api.get<T>(url).then((response) => response.data),
 
   post: <T>(url: string, data?: unknown) =>
-    api.post<ApiResponse<T>>(url, data).then((response) => response.data),
+    api.post<T>(url, data).then((response) => response.data),
 
   patch: <T>(url: string, data?: unknown) =>
-    api.patch<ApiResponse<T>>(url, data).then((response) => response.data),
+    api.patch<T>(url, data).then((response) => response.data),
   put: <T>(url: string, data?: unknown) =>
-    api.put<ApiResponse<T>>(url, data).then((response) => response.data),
+    api.put<T>(url, data).then((response) => response.data),
 
   delete: <T>(url: string) =>
-    api.delete<ApiResponse<T>>(url).then((response) => response.data),
+    api.delete<T>(url).then((response) => response.data),
 };
 export const AdminApiClient = {
   get: <T>(url: string, config?: any) =>
-    apiAdmin.get<ApiResponse<T>>(url, config).then((response) => response.data),
+    apiAdmin.get<T>(url, config).then((response) => response.data),
 
   post: <T>(url: string, data?: unknown, config?: any) =>
     apiAdmin
-      .post<ApiResponse<T>>(url, data, config)
+      .post<T>(url, data, config)
       .then((response) => response.data),
 
   patch: <T>(url: string, data?: unknown, config?: any) =>
     apiAdmin
-      .patch<ApiResponse<T>>(url, data, config)
+      .patch<T>(url, data, config)
       .then((response) => response.data),
   put: <T>(url: string, data?: unknown, config?: any) =>
     apiAdmin
-      .put<ApiResponse<T>>(url, data, config)
+      .put<T>(url, data, config)
       .then((response) => response.data),
 
   delete: <T>(url: string, config?: any) =>
     apiAdmin
-      .delete<ApiResponse<T>>(url, config)
+      .delete<T>(url, config)
       .then((response) => response.data),
 };
 

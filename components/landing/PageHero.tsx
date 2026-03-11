@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 interface PageHeroProps {
   title: string;
   subtitle: string;
+  image: string;
 }
 
-export default function PageHero({ title, subtitle }: PageHeroProps) {
+export default function PageHero({ title, subtitle, image }: PageHeroProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -17,8 +18,10 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
 
   return (
     <div
-      className="relative min-h-[400px] lg:min-h-[500px] flex items-end justify-start px-6 md:px-12 lg:px-20 pb-10 md:pb-16"
-      style={{ backgroundColor: "#808080" }}
+      className="relative min-h-[400px]  flex items-end justify-start px-6 md:px-12 lg:px-20 pb-10 md:pb-16"
+       style={{
+        background: `linear-gradient(0deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%), url('${image}') center/cover no-repeat`,
+      }}
     >
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/30" />

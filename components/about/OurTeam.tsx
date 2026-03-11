@@ -3,22 +3,25 @@
 import { useRef as useRefReact } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useEffect } from "react";
+import { image } from "framer-motion/client";
 
 const teamMembers = [
-  { name: "Noah Ibrahim", role: "MD/CEO" },
-  { name: "Oluwaseyi Ibileke", role: "Head of Operations" },
-  { name: "Mauteen Adeleke", role: "Tech Product Manager" },
-  { name: "Edith Adebayo", role: "Client Relations Officer" },
+  { name: "Noah Ibrahim", role: "Chief Executive Officer", image: "/images/team/ceo.png" },
+  { name: "Collins Oforgu", role: "Chief Of Operations", image: "" },
+  { name: "Mauteen Adeleke", role: "Chief Technology Officer", image: "" },
+  { name: "Edith Adebayo", role: "Client Relations Officer", image: "" },
 ];
 
 function TeamCard({
   name,
   role,
+  image,
   index,
 }: {
   name: string;
   role: string;
   index: number;
+  image: string;
 }) {
   const ref = useRefReact(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -49,15 +52,23 @@ function TeamCard({
       variants={cardVariants}
       initial="hidden"
       animate={controls}
-      className="flex flex-col overflow-hidden rounded-xl border border-card-border bg-white"
+      className="flex flex-col overflow-hidden "
     >
       {/* Placeholder image */}
       <div
-        className="h-[250px] w-full rounded-t-xl md:h-[300px] lg:h-[360px]"
+        className="h-[250px] md:h-[300px] overflow-hidden w-full rounded-[16px]  "
         style={{ backgroundColor: "#c4c4c4" }}
-      />
+      >
+        {image && (
+          <img
+            src={image}
+            alt={name}
+            className="h-full w-full object-cover"
+          />
+        )}
+      </div>
       {/* Info */}
-      <div className="flex flex-col gap-1 px-4 py-4">
+      <div className="flex flex-col gap-1 px-4 py-4 text-center">
         <p className="text-lg md:text-xl lg:text-2xl font-medium text-dark-text">
           {name}
         </p>
@@ -91,8 +102,8 @@ export default function OurTeam() {
   };
 
   return (
-    <section className="bg-page-bg pt-12 md:pt-20">
-      <div className="mx-auto max-w-[1440px] px-4 md:px-10">
+    <section id="team" className="bg-page-bg pt-12 md:py-20">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-20">
         <motion.div
           ref={ref}
           variants={titleVariants}
@@ -105,8 +116,8 @@ export default function OurTeam() {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {teamMembers.map(({ name, role }, index) => (
-            <TeamCard key={name} name={name} role={role} index={index} />
+          {teamMembers.map(({ name, role, image }, index) => (
+            <TeamCard key={name} name={name} role={role} image={image} index={index} />
           ))}
         </div>
       </div>

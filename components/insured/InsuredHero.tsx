@@ -41,7 +41,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative flex items-end w-full min-h-[400px] lg:min-h-[500px]"
+      className="relative flex items-end w-full min-h-[400px] "
       style={{
         background: `linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.40) 100%), url('/images/calculator.jpg') center/cover no-repeat`,
       }}

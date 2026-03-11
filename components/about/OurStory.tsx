@@ -51,7 +51,7 @@ export default function OurStory() {
 
   return (
     <section className="bg-page-bg py-12 md:py-20">
-      <div className="mx-auto max-w-[1440px] px-4 md:px-10">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-20">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
           {/* Left: text */}
           <motion.div

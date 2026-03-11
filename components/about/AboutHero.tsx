@@ -39,12 +39,12 @@ export default function AboutHero() {
 
   return (
     <section
-      className="flex min-h-[400px] w-full items-end md:min-h-[500px]"
+      className="flex min-h-[400px] w-full items-end "
       style={{
         background: `linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 100%), url('/images/umbrella.jpg') center/cover no-repeat`,
       }}
     >
-      <div className="mx-auto w-full max-w-[1440px] px-4 pb-12 pt-24 md:px-10 md:pb-20 md:pt-32">
+      <div className="mx-auto w-full max-w-[1440px] px-4 pb-12 pt-24 md:px-20 md:pb-20 md:pt-32">
         <motion.div
           ref={ref}
           variants={containerVariants}

@@ -10,31 +10,31 @@ import Telegram from "@/src/assets/icons/telegram.svg";
 import Copyright from "@/src/assets/icons/copyright.svg";
 import Image from "next/image";
 import { motion, useInView, type Variants } from "framer-motion";
+import Tiktok from "@/src/assets/icons/tiktok.svg";
 
 const footerLinks = {
   kolanutAfrica: [
-    { label: "About Us", href: "#" },
-    { label: "Our Team", href: "#" },
+    { label: "About Us", href: "/about" },
+    { label: "Our Team", href: "/about#team" },
   ],
   insurance: [
-    { label: "Marine (cargo) Insurance", href: "#" },
+    { label: "Marine (cargo) Insurance", href: "/marine-insurance" },
     { label: "Travel Insurance", href: "#" },
-    { label: "Home Insurance", href: "#" },
+    { label: "Home Insurance", href: "/home-insurance" },
     { label: "Motor Insurance", href: "#" },
   ],
   quickLinks: [
     { label: "Help & Support", href: "#" },
-    { label: "Resources", href: "#" },
+    { label: "Resources", href: "/resources" },
     { label: "Claims", href: "#" },
-    { label: "Contact Us", href: "#" },
+    { label: "Contact Us", href: "/contact" },
   ],
 };
 
 const socials = [
   { Icon: Facebook, label: "Facebook", href: "#" },
-  { Icon: Instagram, label: "Instagram", href: "#" },
-  { Icon: Twitter, label: "Twitter", href: "#" },
-  { Icon: Telegram, label: "Telegram", href: "#" },
+  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/kolanutafrica?igsh=MXg5ZThjeTN4MHhpMQ==" },
+  { Icon: Tiktok, label: "Tiktok", href: "https://www.tiktok.com/@kolanutafrica" },
 ];
 
 export default function Footer() {
@@ -180,7 +180,7 @@ export default function Footer() {
                 aria-label={label}
                 className="flex h-9 w-9 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-white hover:bg-white/30 transition-colors"
               >
-                <Icon width={16} height={16} style={{ color: "#AF060D" }} />
+                <Icon width={ label === "Tiktok" ? 24 : 16} height={ label === "Tiktok" ? 24 : 16} style={{ color: "#AF060D" }} />
               </a>
             ))}
           </div>

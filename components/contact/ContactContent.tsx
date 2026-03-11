@@ -11,19 +11,19 @@ import LocationIcon from "@/src/assets/icons/location-icon.svg";
 const contactDetails = [
   {
     IconComponent: PhoneIcon,
-    label: "Phone",
-    lines: ["+234 800 000 0000", "+234 701 234 5678"],
+    label: "Phone and whatsapp",
+    lines: ["+234 911 600 0658", ],
   },
   {
     IconComponent: EmailIcon,
     label: "Email",
-    lines: ["info@sellerrand.com", "support@sellerrand.com"],
+    lines: ["support@kolanutafrica.com", ],
   },
   {
     IconComponent: LocationIcon,
     label: "Office Address",
     lines: [
-      "123 Victoria Island Road, Lagos, Nigeria 101241",
+      "28, Daniyan Natalia Street, Lekki Phase 1, Lagos, Nigeria",
       "Visit us Monday to Friday, 9AM - 5PM",
     ],
   },

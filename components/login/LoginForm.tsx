@@ -1,22 +1,41 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useAdminLogin } from "@/app/login/hooks";
 
 export default function LoginForm() {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const router = useRouter();
+  const [form, setForm] = useState({ username: "", password: "" });
   const [rememberMe, setRememberMe] = useState(false);
+
+  const loginMutation = useAdminLogin();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire up auth
+
+    try {
+      await loginMutation.mutateAsync({
+        username: form.username,
+        password: form.password,
+      });
+
+      // Redirect to admin dashboard after successful login
+      router.push("/admin");
+    } catch (error) {
+      // Error handling is done in the mutation's onError callback
+      console.error("Login failed:", error);
+    }
   };
+
+  const isLoading = loginMutation.isPending;
 
   return (
     <div className="flex flex-1 items-center justify-center px-6 py-12 bg-white">
@@ -36,7 +55,8 @@ export default function LoginForm() {
           </h2>
           <p
             style={{
-              fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+              fontFamily:
+                "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
               fontSize: "14px",
               fontWeight: 400,
               color: "#4b5563",
@@ -48,30 +68,32 @@ export default function LoginForm() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          {/* Email */}
+          {/* Username */}
           <div className="flex flex-col gap-2">
             <label
-              htmlFor="email"
+              htmlFor="username"
               style={{
-                fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontFamily:
+                  "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
                 fontSize: "14px",
                 fontWeight: 500,
                 color: "#374151",
               }}
             >
-              Email Address
+              Username
             </label>
             <Input
-              id="email"
-              name="email"
-              type="email"
-              value={form.email}
+              id="username"
+              name="username"
+              type="text"
+              value={form.username}
               onChange={handleChange}
-              placeholder="Enter your email address"
+              placeholder="Enter your username"
               required
               className="h-12 rounded-lg border-[#d1d5db] text-base text-[#111827] placeholder:text-[#6b7280] focus-visible:ring-brand-red/30 focus-visible:border-brand-red"
               style={{
-                fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontFamily:
+                  "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
               }}
             />
           </div>
@@ -81,7 +103,8 @@ export default function LoginForm() {
             <label
               htmlFor="password"
               style={{
-                fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontFamily:
+                  "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
                 fontSize: "14px",
                 fontWeight: 500,
                 color: "#374151",
@@ -99,7 +122,8 @@ export default function LoginForm() {
               required
               className="h-12 rounded-lg border-[#d1d5db] text-base text-[#111827] placeholder:text-[#6b7280] focus-visible:ring-brand-red/30 focus-visible:border-brand-red"
               style={{
-                fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontFamily:
+                  "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
               }}
             />
           </div>
@@ -115,7 +139,8 @@ export default function LoginForm() {
               />
               <span
                 style={{
-                  fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+                  fontFamily:
+                    "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
                   fontSize: "14px",
                   fontWeight: 400,
                   color: "#4b5563",
@@ -127,7 +152,8 @@ export default function LoginForm() {
             <Link
               href="/forgot-password"
               style={{
-                fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontFamily:
+                  "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
                 fontSize: "14px",
                 fontWeight: 500,
                 color: "#af060d",
@@ -141,12 +167,14 @@ export default function LoginForm() {
           {/* Sign In button */}
           <Button
             type="submit"
-            className="w-full h-12 rounded-full bg-brand-red hover:bg-brand-red/90 text-white text-base font-medium"
+            disabled={isLoading}
+            className="w-full h-12 rounded-full bg-brand-red hover:bg-brand-red/90 text-white text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
-              fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
+              fontFamily:
+                "HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif",
             }}
           >
-            Sign In
+            {isLoading ? "Signing in..." : "Sign In"}
           </Button>
         </form>
       </div>

@@ -1,5 +1,7 @@
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
+import { Merriweather, Plus_Jakarta_Sans } from "next/font/google";
+import "../globals.css";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (

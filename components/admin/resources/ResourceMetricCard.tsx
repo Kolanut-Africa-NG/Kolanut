@@ -17,12 +17,12 @@ export default function ResourceMetricCard({ label, count }: ResourceMetricCardP
     >
       {/* Document icon */}
       <div
-        className="flex items-center justify-center shrink-0"
+        className="flex items-center justify-center shrink-0 p-2 bg-[#FEF2F2]"
         style={{
-          width: 44,
-          height: 44,
-          border: "2px solid #af060d",
-          borderRadius: 6,
+          width: 40,
+          height: 40,
+          
+          borderRadius: 8,
         }}
       >
         <img src="/icons/admin/document.svg" alt="document" style={{ width: 18, height: 22 }} />
@@ -35,7 +35,7 @@ export default function ResourceMetricCard({ label, count }: ResourceMetricCardP
             color: "#4b5563",
             fontSize: 16,
             fontWeight: 400,
-            fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, sans-serif",
+            
           }}
         >
           {label}
@@ -45,7 +45,7 @@ export default function ResourceMetricCard({ label, count }: ResourceMetricCardP
             color: "#111827",
             fontSize: 24,
             fontWeight: 400,
-            fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, sans-serif",
+            
           }}
         >
           {count}

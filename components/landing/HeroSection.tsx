@@ -41,63 +41,72 @@ export default function HeroSection() {
   };
 
   return (
-    <section
-      className="flex w-full items-center md:min-h-screen min-h-[500px]"
-      style={{
-        background: `linear-gradient(0deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%), url('/images/hero-bg.jpg') center/cover no-repeat`,
-      }}
-    >
-      <div className="mx-auto w-full max-w-[1440px] px-4 pb-12 lg:px-20 lg:pb-20">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-        >
-          {/* NAICOM badge */}
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-section {
+            background:  url('/images/background.svg') center/cover no-repeat;
+          }
+        }
+        @media (min-width: 769px) {
+          .hero-section {
+            background: linear-gradient(0deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%), url('/images/hero-bg.jpg') center/cover no-repeat;
+          }
+        }
+      `}</style>
+      <section className="hero-section flex w-full items-center min-h-screen">
+        <div className="mx-auto w-full max-w-[1440px] px-4 pb-12 lg:px-20 lg:pb-20">
           <motion.div
-            variants={itemVariants}
-            className="mb-6 flex w-fit items-center gap-2 rounded-full bg-[#FFFFFF] border border-brand-red px-3 lg:px-4 py-1.5 lg:py-2 backdrop-blur-sm"
+            ref={ref}
+            variants={containerVariants}
+            initial="hidden"
+            animate={controls}
           >
-            <ShieldNaicom
-              width={13}
-              height={15}
-              className="text-brand-red"
-              style={{ color: "#af060d" }}
-            />
-            <span className="text-xs text-brand-red whitespace-nowrap">
-              Licensed by NAICOM • In Partnership with Cornerstone
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <div className="flex flex-col gap-4 lg:gap-6">
-            <div className="flex flex-col gap-3 lg:gap-4">
-              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-bold capitalize leading-tight text-white max-w-[774px]">
-                Insurance Made Simple, Fast And Truly African
-              </h1>
-              <p className="text-base lg:text-xl font-normal leading-relaxed text-white max-w-[700px]">
-                Get covered from your phone or laptop—no queues, no heavy
-                paperwork. Protect your home, vehicle, travels, and cargo with
-                ease.
-              </p>
-            </div>
-
-            {/* CTAs */}
+            {/* NAICOM badge */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap items-center gap-3 lg:gap-6 mt-2"
+              className="mb-6 flex w-fit items-center gap-2 rounded-full bg-[#FFFFFF] border border-brand-red px-3 lg:px-4 py-1.5 lg:py-2 backdrop-blur-sm"
             >
-              <Button className="rounded-full bg-brand-red !py-3 !px-8 text-sm lg:text-base font-medium text-white !hover:bg-brand-red/90 h-auto">
-                Get Insured Now
-              </Button>
-              <Button className="rounded-full border border-white bg-transparent !py-3 !px-8 text-sm lg:text-base font-medium text-white !hover:bg-white/10 h-auto">
-                Learn More
-              </Button>
+              <ShieldNaicom
+                width={13}
+                height={15}
+                className="text-brand-red"
+                style={{ color: "#af060d" }}
+              />
+              <span className="text-xs text-brand-red whitespace-nowrap">
+                Licensed by NAICOM • In Partnership with Cornerstone
+              </span>
             </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+
+            {/* Headline */}
+            <div className="flex flex-col gap-4 lg:gap-6">
+              <div className="flex flex-col gap-3 lg:gap-4">
+                <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-bold capitalize leading-tight text-white max-w-[774px]">
+                  Insurance Made Simple, Fast And Truly African
+                </h1>
+                <p className="text-base lg:text-xl font-normal leading-relaxed text-white max-w-[700px]">
+                  Get covered from your phone or laptop—no queues, no heavy
+                  paperwork. Protect your home, vehicle, travels, and cargo with
+                  ease.
+                </p>
+              </div>
+
+              {/* CTAs */}
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-wrap items-center gap-3 lg:gap-6 mt-2"
+              >
+                <Button className="rounded-full bg-brand-red !py-3 h-auto !px-8 text-sm lg:text-base font-medium text-white !hover:bg-brand-red/90 flex items-center justify-center">
+                  Get Insured Now
+                </Button>
+                <Button className="rounded-full border border-white bg-transparent !py-3 !px-8 text-sm lg:text-base font-medium text-white !hover:bg-white/10 h-auto flex  items-center justify-center">
+                  Learn More
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

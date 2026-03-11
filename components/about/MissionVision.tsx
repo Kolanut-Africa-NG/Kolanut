@@ -83,7 +83,7 @@ function VisionCard({
 export default function MissionVision() {
   return (
     <section className="bg-[#FFFAFA] py-12 md:py-16">
-      <div className="mx-auto max-w-[1440px] px-4 md:px-10">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-20">
         <div className="grid grid-cols-1 gap-5 md:gap-6 sm:grid-cols-2">
           {cards.map(({ Icon, title, desc }, index) => (
             <VisionCard

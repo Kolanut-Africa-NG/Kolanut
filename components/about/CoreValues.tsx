@@ -145,7 +145,7 @@ export default function CoreValues() {
 
   return (
     <section className="py-12 md:py-20" style={{ backgroundColor: "#fdfdfd" }}>
-      <div className="mx-auto max-w-[1440px] px-4 md:px-10">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-20">
         <motion.div
           ref={ref}
           variants={titleVariants}

@@ -126,7 +126,7 @@ export default function AdminResourcesPage() {
                 color: "#6b7280",
                 fontSize: 14,
                 fontWeight: 400,
-                fontFamily: "HelveticaNeue, Helvetica Neue, Helvetica, sans-serif",
+                
               }}
             >
               Create and manage properties

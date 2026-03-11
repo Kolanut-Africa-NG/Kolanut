@@ -93,7 +93,7 @@ export default function ResourcePostForm({ initialData, onChange }: ResourcePost
             <div className="flex flex-col items-center gap-3">
               <div
                 className="flex items-center justify-center"
-                style={{ border: "2px solid #111827", borderRadius: 4, padding: 2 }}
+                
               >
                 <img
                   src="/icons/admin/upload-image.svg"

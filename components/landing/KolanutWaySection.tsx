@@ -78,7 +78,7 @@ export default function KolanutWaySection() {
           {/* Right image */}
           <motion.div variants={imageVariants} className="w-full lg:w-[55%]">
             <img
-              src="/images/umbrella.jpg"
+              src="/images/honor.svg"
               alt="Red umbrella standing out among grey umbrellas - The Kolanut Way"
               className="h-[280px] sm:h-[350px] lg:h-[490px] w-full rounded-xl object-cover"
             />

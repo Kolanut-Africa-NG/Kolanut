@@ -186,9 +186,9 @@ const Faqs: React.FC = () => {
       <style>{animationStyles}</style>
       <div>
         <div
-          className="relative min-h-[400px] lg:min-h-[500px] bg-cover bg-center flex items-end justify-start px-6 md:px-12 lg:px-20 pb-8 md:pb-15"
+          className="relative min-h-[400px]  bg-cover bg-center flex items-end justify-start px-6 md:px-12 lg:px-20 pb-8 md:pb-15"
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('/images/faq_bg.jpg')`,
+            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('/images/faq-hero.jpg')`,
             backgroundColor: "#808080",
           }}
         >

@@ -48,7 +48,7 @@ export default function CreateResourcePage() {
       </Link>
 
       {/* Page title */}
-      <div className="flex flex-col" style={{ gap: 4 }}>
+      <div className="flex flex-col bg-white border border-[#F3F4F6] p-4 rounded-[8px]" style={{ gap: 4 }}>
         <h1
           style={{
             color: "#000000",

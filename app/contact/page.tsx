@@ -6,6 +6,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-page-bg">
       <PageHero
         title="Contact Us"
+        image='/images/contact.jpg'
         subtitle="Have questions? We're here to help. Reach out to our team."
       />
       <ContactContent />
