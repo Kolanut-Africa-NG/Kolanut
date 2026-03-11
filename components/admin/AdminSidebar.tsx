@@ -51,9 +51,7 @@ export default function AdminSidebar() {
                 className="flex items-center justify-center shrink-0 text-xl"
                 style={{
                   width: 18,
-                  height: 18,
-                  
-                 
+                  height: 18,                 
                   padding: 0,
                 }}
               >
