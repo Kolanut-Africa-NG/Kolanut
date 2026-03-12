@@ -80,7 +80,7 @@ export default function KolanutWaySection() {
             <img
               src="/images/honor.svg"
               alt="Red umbrella standing out among grey umbrellas - The Kolanut Way"
-              className="h-[280px] sm:h-[350px] lg:h-[490px] w-full rounded-xl object-cover"
+              className=" w-full rounded-xl object-cover"
             />
           </motion.div>
         </motion.div>
