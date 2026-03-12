@@ -23,7 +23,6 @@ interface LoginResponse {
   refresh_token: string;
   access_expires_at: string;
   refresh_expires_at: string;
-  
 }
 
 interface LoginCredentials {
@@ -36,9 +35,14 @@ export const useAdminLogin = () => {
 
   return useMutation({
     mutationFn: async (credentials: LoginCredentials) => {
-      const response = await admin.post<LoginResponse>("auth/token", {
-        username: credentials.username,
-        password: credentials.password,
+      const formData = new FormData();
+      formData.append("username", credentials.username);
+      formData.append("password", credentials.password);
+
+      const response = await admin.post<LoginResponse>("auth/token", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
       return response;
     },

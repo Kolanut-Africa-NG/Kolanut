@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance } from "axios";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@/lib/constants";
 import { useUserStore } from "@/lib/store/user-store";
-import { ApiResponse } from "@/lib/types";
+import { ApiResponse, ValidationErrorDetail } from "@/lib/types";
 
 const api: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -30,19 +30,28 @@ apiAdmin.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
     const errorData = error.response?.data as
-      | { detail?: string; message?: string; path?: string; timestamp?: string }
+      | {
+          detail?: string | ValidationErrorDetail[];
+          message?: string;
+          path?: string;
+          timestamp?: string;
+        }
       | undefined;
 
-    const errorMessage =
-      errorData?.detail ||
-      errorData?.message ||
-      error.message ||
-      "An unknown error occurred";
+    let errorMessage: string;
 
-    if (
-      errorMessage === "Not authenticated" ||
-      error.response?.status === 401
-    ) {
+    // Handle Pydantic validation errors (array of errors)
+    if (Array.isArray(errorData?.detail)) {
+      errorMessage = errorData.detail.map((err) => err.msg).join(", ");
+    } else {
+      errorMessage =
+        errorData?.detail ||
+        errorData?.message ||
+        error.message ||
+        "An unknown error occurred";
+    }
+
+    if (errorMessage === "Not authenticated") {
       localStorage.removeItem(ACCESS_TOKEN);
       localStorage.removeItem(REFRESH_TOKEN);
       // Clear user store
@@ -82,11 +91,23 @@ api.interceptors.response.use(
 
     // Attempt to extract custom error structure
     const errorData = error.response?.data as
-      | { detail?: string; path?: string; timestamp?: string }
+      | {
+          detail?: string | ValidationErrorDetail[];
+          path?: string;
+          timestamp?: string;
+        }
       | undefined;
 
-    const errorMessage =
-      errorData?.detail || error.message || "An unknown error occurred";
+    let errorMessage: string;
+
+    // Handle Pydantic validation errors (array of errors)
+    if (Array.isArray(errorData?.detail)) {
+      errorMessage = errorData.detail.map((err) => err.msg).join(", ");
+    } else {
+      errorMessage =
+        errorData?.detail || error.message || "An unknown error occurred";
+    }
+
     console.log(errorData);
     if (errorMessage === "Not authenticated") {
       localStorage.removeItem(ACCESS_TOKEN);
@@ -100,8 +121,7 @@ api.interceptors.response.use(
 
 // Type-safe API methods
 export const apiClient = {
-  get: <T>(url: string) =>
-    api.get<T>(url).then((response) => response.data),
+  get: <T>(url: string) => api.get<T>(url).then((response) => response.data),
 
   post: <T>(url: string, data?: unknown) =>
     api.post<T>(url, data).then((response) => response.data),
@@ -119,23 +139,15 @@ export const AdminApiClient = {
     apiAdmin.get<T>(url, config).then((response) => response.data),
 
   post: <T>(url: string, data?: unknown, config?: any) =>
-    apiAdmin
-      .post<T>(url, data, config)
-      .then((response) => response.data),
+    apiAdmin.post<T>(url, data, config).then((response) => response.data),
 
   patch: <T>(url: string, data?: unknown, config?: any) =>
-    apiAdmin
-      .patch<T>(url, data, config)
-      .then((response) => response.data),
+    apiAdmin.patch<T>(url, data, config).then((response) => response.data),
   put: <T>(url: string, data?: unknown, config?: any) =>
-    apiAdmin
-      .put<T>(url, data, config)
-      .then((response) => response.data),
+    apiAdmin.put<T>(url, data, config).then((response) => response.data),
 
   delete: <T>(url: string, config?: any) =>
-    apiAdmin
-      .delete<T>(url, config)
-      .then((response) => response.data),
+    apiAdmin.delete<T>(url, config).then((response) => response.data),
 };
 
 export { apiClient as api, AdminApiClient as admin };

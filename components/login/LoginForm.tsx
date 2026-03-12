@@ -28,7 +28,7 @@ export default function LoginForm() {
       });
 
       // Redirect to admin dashboard after successful login
-      router.push("/admin");
+      router.push("/admin/resources");
     } catch (error) {
       // Error handling is done in the mutation's onError callback
       console.error("Login failed:", error);

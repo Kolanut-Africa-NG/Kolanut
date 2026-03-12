@@ -68,3 +68,12 @@ export type PaginatedData<T> = {
 // Combined type for paginated API responses
 export type ApiPaginatedResponse<T> = ApiResponse<PaginatedData<T>>;
 
+// Pydantic validation error types
+export type ValidationErrorDetail = {
+  type: string;
+  loc: string[];
+  msg: string;
+  input: any;
+  ctx?: Record<string, any>;
+  url?: string;
+};
