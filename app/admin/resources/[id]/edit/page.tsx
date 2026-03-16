@@ -159,7 +159,7 @@ export default function EditResourcePage({ params }: EditResourcePageProps) {
   const handleDelete = async () => {
     try {
       setIsDeleting(true);
-      await deleteBlogMutation.mutateAsync(Number(numericId));
+      await deleteBlogMutation.mutateAsync(numericId);
       router.push("/admin/resources");
     } catch (error) {
       console.error("Failed to delete:", error);

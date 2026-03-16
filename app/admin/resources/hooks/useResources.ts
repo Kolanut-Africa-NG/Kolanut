@@ -6,7 +6,7 @@ import { ResourceItem } from "@/components/admin/resources/ResourceCard";
 import { toast } from "@/lib/utils/toast";
 
 export interface BlogPost {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   description: string;
@@ -56,7 +56,7 @@ export interface UploadResponse {
   url: string;
 }
 
-const transformBlogPost = (post: BlogPost): ResourceItem => ({
+const transformBlogPost = (post: BlogPost) => ({
   id: post.id,
   title: post.title,
   description: post.description,
@@ -171,7 +171,7 @@ export const useDeleteBlog = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (id: number) => {
+    mutationFn: async (id: string) => {
       const response = await admin.delete<{
         success: boolean;
         message: string;

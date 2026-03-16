@@ -42,7 +42,7 @@ export default function AdminFaqsPage() {
   const visibleFaqs = faqs.filter((f) => f.category === activeCategory);
 
   const handleAddFaq = (data: {
-    id?: number;
+    id?: string;
     category: string;
     question: string;
     answer: string;
@@ -80,7 +80,7 @@ export default function AdminFaqsPage() {
 
   const handleConfirmDelete = () => {
     if (deletingFaq) {
-      deleteFaq.mutate(deletingFaq.question);
+      deleteFaq.mutate(deletingFaq.id);
     }
     setShowDeleteDialog(false);
     setDeletingFaq(null);

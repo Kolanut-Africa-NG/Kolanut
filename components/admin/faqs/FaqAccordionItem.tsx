@@ -4,7 +4,7 @@ import { useState } from "react";
 import { MoreVertical } from "lucide-react";
 
 export interface FaqItem {
-  id: number;
+  id: string;
   question: string;
   answer: string;
   category: string;

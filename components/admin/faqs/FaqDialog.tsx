@@ -30,13 +30,13 @@ interface FAQDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit?: (data: {
-    id?: number;
+    id?: string;
     category: string;
     question: string;
     answer: string;
   }) => void;
   initialData?: {
-    id: number;
+    id: string;
     category: string;
     question: string;
     answer: string;

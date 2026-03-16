@@ -7,6 +7,7 @@ import { toast } from "@/lib/utils/toast";
 
 // API Response type from /v1/faqs/
 export interface ApiFaqItem {
+  id: string;
   category: string;
   question: string;
   answer: string;
@@ -30,7 +31,7 @@ function generateFaqId(
 
 // Transform API response to FaqItem format
 const transformFaqItem = (item: ApiFaqItem, index: number): FaqItem => ({
-  id: generateFaqId(item.category, item.question, index),
+  id: item.id,
   category: item.category,
   question: item.question,
   answer: item.answer,
@@ -61,10 +62,7 @@ export const useCreateFaq = () => {
 
   return useMutation({
     mutationFn: async (payload: CreateFaqPayload) => {
-      const response = await admin.post<ApiFaqItem>(
-        "/faqs/",
-        payload,
-      );
+      const response = await admin.post<ApiFaqItem>("/faqs/", payload);
       return response;
     },
     onSuccess: () => {
@@ -113,13 +111,11 @@ export const useDeleteFaq = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (question: string) => {
+    mutationFn: async (id: string) => {
       const response = await admin.delete<{
         success: boolean;
         message: string;
-      }>(`/faqs/`, {
-        params: { question },
-      });
+      }>(`/faqs/${id}`);
       return response;
     },
     onSuccess: () => {
