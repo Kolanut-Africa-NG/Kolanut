@@ -2,12 +2,7 @@ import Image from "next/image";
 
 export default function LoginBranding() {
   return (
-    <div
-      className="relative flex flex-col overflow-hidden w-1/2 shrink-0 min-h-screen bg-brand-red px-20 pt-36 pb-16"
-      style={{
-        background: ` url('/images/Features.svg') cover no-repeat`,
-      }}
-    >
+    <div className="relative flex flex-col overflow-hidden w-1/2 shrink-0 min-h-screen px-20 pt-36 pb-16 bg-[url('/images/Features.svg')] bg-cover bg-no-repeat">
       {/* Main content */}
       <div className="relative z-10 flex flex-col gap-6">
         {/* Headline + description */}
