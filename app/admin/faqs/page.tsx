@@ -47,15 +47,14 @@ export default function AdminFaqsPage() {
     question: string;
     answer: string;
   }) => {
-    if (editingFaq) {
+    if (editingFaq && data.id) {
       // Update existing FAQ
       const payload: UpdateFaqPayload = {
-        originalQuestion: editingFaq.question,
         category: data.category,
         question: data.question,
         answer: data.answer,
       };
-      updateFaq.mutate(payload);
+      updateFaq.mutate({ id: data.id, payload });
     } else {
       // Create new FAQ
       const payload: CreateFaqPayload = {

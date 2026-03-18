@@ -79,10 +79,15 @@ export const useCreateFaq = () => {
 
 // Update FAQ payload (uses question as identifier since API has no ID)
 export interface UpdateFaqPayload {
-  originalQuestion: string;
   category: string;
   question: string;
   answer: string;
+}
+
+// Update FAQ mutation parameters
+interface UpdateFaqParams {
+  id: string;
+  payload: UpdateFaqPayload;
 }
 
 // Update FAQ
@@ -90,8 +95,8 @@ export const useUpdateFaq = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (payload: UpdateFaqPayload) => {
-      const response = await admin.patch<ApiFaqItem>(`/faqs/`, payload);
+    mutationFn: async ({ id, payload }: UpdateFaqParams) => {
+      const response = await admin.put<ApiFaqItem>(`/faqs/${id}`, payload);
       return response;
     },
     onSuccess: () => {
