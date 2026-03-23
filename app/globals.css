@@ -2,6 +2,15 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* RichTextEditor Typography Styles */
 .tiptap-editor {
   font-family:

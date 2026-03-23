@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Eye, Search, CreditCard, HandCoins } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -87,8 +88,13 @@ const insuranceTypeBadgeColor: Record<string, string> = {
 };
 
 export default function TransactionsPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("premium");
   const [searchQuery, setSearchQuery] = useState("");
+
+  const handleViewTransaction = (id: string) => {
+    router.push(`/admin/transactions/${id}`);
+  };
 
   const data = activeTab === "premium" ? premiumPayments : claimSettlements;
 
@@ -229,7 +235,7 @@ export default function TransactionsPage() {
                         {row.customer}
                       </TableCell>
                       <TableCell className="py-3.5 text-sm font-semibold text-[#374151]">
-                         {row.type}
+                        {row.type}
                       </TableCell>
                       <TableCell className="py-3.5 text-sm text-gray-600 font-semibold">
                         {row.date}
@@ -242,6 +248,7 @@ export default function TransactionsPage() {
                           variant="ghost"
                           size="sm"
                           className=" gap-1.5 text-sm font-medium h-8 px-2"
+                          onClick={() => handleViewTransaction(row.id)}
                         >
                           <Eye className="w-4 h-4" />
                           View

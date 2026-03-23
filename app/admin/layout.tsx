@@ -3,17 +3,18 @@ import AdminHeader from "@/components/admin/AdminHeader";
 import { Merriweather, Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex min-h-screen" style={{ backgroundColor: "#f9fafb" }}>
       <AdminSidebar />
-      <div className="flex flex-col flex-1" style={{ marginLeft: 210 }}>
+      <div className="flex flex-col flex-1" style={{ marginLeft: 250 }}>
         <AdminHeader />
         <main className="flex-1 overflow-y-auto" style={{ paddingTop: 64 }}>
-          <div className="p-10">
- {children}
-          </div>
-         
+          <div className="p-10">{children}</div>
         </main>
       </div>
     </div>
