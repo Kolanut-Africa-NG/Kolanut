@@ -59,6 +59,34 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
     return States.get(personalFields.state) ?? [];
   }, [personalFields?.state]);
 
+  // Validation: Check if all required fields are filled
+  const isFormValid = useMemo(() => {
+    // If personalFields are provided, validate them
+    if (personalFields) {
+      const personalValid =
+        personalFields.firstName?.trim() &&
+        personalFields.surname?.trim() &&
+        personalFields.email?.trim() &&
+        personalFields.phone?.trim() &&
+        personalFields.dateOfBirth?.trim() &&
+        personalFields.nin?.trim() &&
+        personalFields.state?.trim() &&
+        personalFields.city?.trim();
+
+      if (!personalValid) return false;
+    }
+
+    // If locationFields are provided, validate only the address field
+    // (state and city are already in personalFields)
+    if (locationFields) {
+      const locationValid = locationFields.address?.trim();
+
+      if (!locationValid) return false;
+    }
+
+    return true;
+  }, [personalFields, locationFields]);
+
   return (
     <div className="space-y-6">
       {/* Title */}
@@ -76,7 +104,9 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
         {personalFields && (
           <>
             {/* First Name + Surname */}
-            <div className={`grid gap-5 ${fullWidthOnMobile ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
+            <div
+              className={`grid gap-5 ${fullWidthOnMobile ? "grid-cols-1" : "grid-cols-1 lg:grid-cols-2"}`}
+            >
               <FormInput
                 label="First Name"
                 placeholder="Enter"
@@ -92,7 +122,9 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
             </div>
 
             {/* Email + Phone */}
-            <div className={`grid gap-5 ${fullWidthOnMobile ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
+            <div
+              className={`grid gap-5 ${fullWidthOnMobile ? "grid-cols-1" : "grid-cols-1 lg:grid-cols-2"}`}
+            >
               <FormInput
                 label="Email Address"
                 placeholder="Enter email address"
@@ -110,7 +142,9 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
             </div>
 
             {/* Date of Birth + NIN */}
-            <div className={`grid gap-5 ${fullWidthOnMobile ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
+            <div
+              className={`grid gap-5 ${fullWidthOnMobile ? "grid-cols-1" : "grid-cols-1 lg:grid-cols-2"}`}
+            >
               <FormInput
                 label="Date of Birth"
                 placeholder="mm/dd/yyyy"
@@ -132,9 +166,13 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
         {locationFields && (
           <>
             {/* State + City/LGA */}
-            <div className={`grid gap-5 ${fullWidthOnMobile ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
+            <div
+              className={`grid gap-5 ${fullWidthOnMobile ? "grid-cols-1" : "grid-cols-1 lg:grid-cols-2"}`}
+            >
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-[#374151]">State</label>
+                <label className="text-sm font-medium text-[#374151]">
+                  State
+                </label>
                 <Select
                   value={personalFields?.state || ""}
                   onValueChange={(v) => {
@@ -146,8 +184,8 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
-                    {stateList.map((s) => (
-                      <SelectItem key={s} value={s}>
+                    {stateList.map((s, index) => (
+                      <SelectItem key={`${s}-${index}`} value={s}>
                         {s}
                       </SelectItem>
                     ))}
@@ -167,8 +205,8 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
-                    {cityList.map((c) => (
-                      <SelectItem key={c} value={c}>
+                    {cityList.map((c, index) => (
+                      <SelectItem key={`${c}-${index}`} value={c}>
                         {c}
                       </SelectItem>
                     ))}
@@ -198,7 +236,11 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
       </div>
 
       {/* Navigation */}
-      <StepNavigation onBack={onBack} onContinue={onContinue} />
+      <StepNavigation
+        onBack={onBack}
+        onContinue={onContinue}
+        isDisabled={!isFormValid}
+      />
     </div>
   );
 }

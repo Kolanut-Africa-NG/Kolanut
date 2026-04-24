@@ -131,7 +131,7 @@ export default function Step3ReviewPay({
       </div>
 
       {/* Go Back */}
-      <StepNavigation onBack={onBack} onContinue={onPay} continueLabel="Pay Now" fullWidthButton />
+      <StepNavigation onBack={onBack}  />
     </div>
   );
 }

@@ -133,13 +133,14 @@ export default function TenantPolicyPage() {
           <GenericStepIndicator currentStep={currentStep} steps={STEPS} />
 
           {/* Step Content */}
-          <div className="transition-all duration-300 mt-8">
+          <div className="transition-all max-w-[920px] mx-auto duration-300 mt-8">
             {currentStep === 1 && (
               <Step1ChoosePlan<TenantPolicyFormData>
                 plans={TENANT_PLANS}
                 formatPrice={formatNaira}
                 onSelect={handleSelectPlan}
                 onContinue={handleContinueStep1}
+                insuranceType="tenant-policy"
               />
             )}
 
@@ -169,7 +170,9 @@ export default function TenantPolicyPage() {
                 summaryRows={[
                   {
                     label: "Full Name:",
-                    value: `${formData.firstName} ${formData.surname}`.trim() || "N/A",
+                    value:
+                      `${formData.firstName} ${formData.surname}`.trim() ||
+                      "N/A",
                   },
                   { label: "Insurance Type:", value: "Home Insurance" },
                   {
@@ -200,7 +203,10 @@ export default function TenantPolicyPage() {
             {currentStep === 4 && (
               <Step4PolicyDocument
                 policyNumber="KA-09795170"
-                fullName={`${formData.firstName} ${formData.surname}`.trim() || "Policy Holder"}
+                fullName={
+                  `${formData.firstName} ${formData.surname}`.trim() ||
+                  "Policy Holder"
+                }
                 insuranceType="Home Insurance"
                 productName={getPlanLabel(formData.selectedPlan)}
                 premiumPaid={formatUsd(formData.selectedPlanPrice || 26275)}

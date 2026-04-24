@@ -11,10 +11,10 @@ import Step4PolicyDocument from "@/components/insurance/Step4PolicyDocument";
 
 const HOMEOWNER_PLANS = [
   {
-    id: "standard",
-    name: "Standard Plan",
-    description: "Essential coverage for your home and belongings",
-    price: 35000,
+    id: "Basic",
+    name: "Basic Plan",
+    description: "Perfect for protection for you and up to content",
+    price: 124775,
     features: [
       "Building coverage up to ₦15 million",
       "Contents coverage up to ₦5 million",
@@ -24,10 +24,10 @@ const HOMEOWNER_PLANS = [
     ],
   },
   {
-    id: "comprehensive",
-    name: "Comprehensive Plan",
-    description: "Complete protection with higher limits and additional benefits",
-    price: 75000,
+    id: "bronze",
+    name: "Bronze Plan",
+    description: "Better coverage for your home, contents and small gadgets",
+    price: 221775,
     features: [
       "Building coverage up to ₦50 million",
       "Contents coverage up to ₦20 million",
@@ -39,10 +39,40 @@ const HOMEOWNER_PLANS = [
     ],
   },
   {
-    id: "premium",
-    name: "Premium Plan",
-    description: "Ultimate all-round protection for high-value homes",
-    price: 150000,
+    id: "silver",
+    name: "Silver Plan",
+    description: "Best balance of affordability and complete protection",
+    price: 415775,
+    features: [
+      "Unlimited building coverage",
+      "Unlimited contents coverage",
+      "Comprehensive all-risks",
+      "Worldwide coverage",
+      "High-value items",
+      "VIP claims service",
+      "24/7 support",
+    ],
+  },
+  {
+    id: "gold",
+    name: "Gold Plan",
+    description: "Provides even with higher limits for valuables and more",
+    price: 609775,
+    features: [
+      "Unlimited building coverage",
+      "Unlimited contents coverage",
+      "Comprehensive all-risks",
+      "Worldwide coverage",
+      "High-value items",
+      "VIP claims service",
+      "24/7 support",
+    ],
+  },
+  {
+    id: "platinum",
+    name: "Platinum Plan",
+    description: "All-round protection for high-value homes and possessions",
+    price: 706775,
     features: [
       "Unlimited building coverage",
       "Unlimited contents coverage",
@@ -114,7 +144,7 @@ export default function HomeownerPolicyPage() {
           <GenericStepIndicator currentStep={currentStep} steps={STEPS} />
 
           {/* Step Content */}
-          <div className="transition-all duration-300 mt-8">
+          <div className="transition-all duration-300 max-w-[920px] mx-auto mt-8">
             {currentStep === 1 && (
               <Step1ChoosePlan<HomeownerPolicyFormData>
                 plans={HOMEOWNER_PLANS}
@@ -123,6 +153,7 @@ export default function HomeownerPolicyPage() {
                 onContinue={handleContinueStep1}
                 title="Choose the Right Cover for Your Home"
                 description="Compare our flexible homeowner plans and find one that fits your home, your lifestyle, and your budget"
+                insuranceType="homeowner-policy"
               />
             )}
 
@@ -135,10 +166,10 @@ export default function HomeownerPolicyPage() {
                   phone: formData.phone,
                   dateOfBirth: formData.dateOfBirth,
                   nin: formData.nin,
-                }}
-                locationFields={{
                   state: formData.state,
                   city: formData.city,
+                }}
+                locationFields={{
                   address: formData.address,
                 }}
                 onUpdate={updateField}
@@ -152,7 +183,9 @@ export default function HomeownerPolicyPage() {
                 summaryRows={[
                   {
                     label: "Full Name:",
-                    value: `${formData.firstName} ${formData.surname}`.trim() || "N/A",
+                    value:
+                      `${formData.firstName} ${formData.surname}`.trim() ||
+                      "N/A",
                   },
                   { label: "Insurance Type:", value: "Home Insurance" },
                   {
@@ -188,7 +221,10 @@ export default function HomeownerPolicyPage() {
             {currentStep === 4 && (
               <Step4PolicyDocument
                 policyNumber="KA-09795170"
-                fullName={`${formData.firstName} ${formData.surname}`.trim() || "Policy Holder"}
+                fullName={
+                  `${formData.firstName} ${formData.surname}`.trim() ||
+                  "Policy Holder"
+                }
                 insuranceType="Home Insurance"
                 productName={getPlanLabel(formData.selectedPlan)}
                 premiumPaid={formatUsd(formData.selectedPlanPrice || 35000)}

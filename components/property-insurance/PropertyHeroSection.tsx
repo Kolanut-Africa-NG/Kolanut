@@ -22,7 +22,7 @@ export default function PropertyHeroSection({
     <section
       className="w-full flex items-end min-h-[340px] lg:min-h-[462px]"
       style={{
-        background: `linear-gradient(0deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.25) 100%), url('/images/home-insurance-hero.png') center/cover no-repeat`,
+        background: `linear-gradient(0deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.25) 100%), url('/images/property.jpg') center/cover no-repeat`,
       }}
     >
       <div className="mx-auto w-full max-w-[1440px] px-4 lg:px-20 pb-10 lg:pb-16 pt-24 lg:pt-32">

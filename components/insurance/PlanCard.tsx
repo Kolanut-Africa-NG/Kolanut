@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 interface Plan {
@@ -18,6 +19,7 @@ interface PlanCardProps {
   onSelect: () => void;
   formatPrice: (price: number) => string;
   priceLabel?: string;
+  insuranceType?: string;
 }
 
 export default function PlanCard({
@@ -27,7 +29,12 @@ export default function PlanCard({
   onSelect,
   formatPrice,
   priceLabel = "Total Premium",
+  insuranceType,
 }: PlanCardProps) {
+  const coverageDetailsLink = insuranceType
+    ? `/property-insurance/coverage/${insuranceType}/${plan.id}`
+    : null;
+
   return (
     <div className="rounded-2xl border border-[#F3F4F6] bg-[#fffafa] px-5 py-5 flex flex-col gap-4">
       {/* Top row: Plan info + Price */}
@@ -70,13 +77,22 @@ export default function PlanCard({
 
       {/* Bottom row: Toggle Details + Select Button */}
       <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={onToggle}
-          className="text-sm lg:text-base font-semibold text-brand-red hover:text-brand-red/80 transition-colors"
-        >
-          {isExpanded ? "Hide Coverage Details" : "See Coverage Details"}
-        </button>
+        {coverageDetailsLink ? (
+          <Link
+            href={coverageDetailsLink}
+            className="text-sm lg:text-base font-semibold text-brand-red hover:text-brand-red/80 transition-colors"
+          >
+            See Coverage Details
+          </Link>
+        ) : (
+          <button
+            type="button"
+            onClick={onToggle}
+            className="text-sm lg:text-base font-semibold text-brand-red hover:text-brand-red/80 transition-colors"
+          >
+            {isExpanded ? "Hide Coverage Details" : "See Coverage Details"}
+          </button>
+        )}
         <Button
           onClick={onSelect}
           className="rounded-full bg-brand-red hover:bg-brand-red/90 text-white text-sm font-medium !px-5 py-2 h-[40px]"

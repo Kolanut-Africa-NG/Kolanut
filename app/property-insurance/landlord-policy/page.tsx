@@ -11,10 +11,10 @@ import Step4PolicyDocument from "@/components/insurance/Step4PolicyDocument";
 
 const LANDLORD_PLANS = [
   {
-    id: "standard",
-    name: "Standard Plan",
-    description: "Basic coverage for your rental property and loss of rent",
-    price: 45000,
+    id: "basic",
+    name: "Basic Plan",
+    description: "Perfect for protection for you and up to content",
+    price: 135000,
     features: [
       "Building coverage up to ₦10 million",
       "Loss of rent protection",
@@ -23,10 +23,10 @@ const LANDLORD_PLANS = [
     ],
   },
   {
-    id: "comprehensive",
-    name: "Comprehensive Plan",
-    description: "Complete protection with higher limits and additional benefits",
-    price: 85000,
+    id: "bronze",
+    name: "Bronze Plan",
+    description: "Better coverage for your home, contents and small gadgets",
+    price: 245000,
     features: [
       "Building coverage up to ₦25 million",
       "Loss of rent protection",
@@ -37,10 +37,38 @@ const LANDLORD_PLANS = [
     ],
   },
   {
-    id: "premium",
-    name: "Premium Plan",
-    description: "Ultimate all-round protection with maximum coverage",
-    price: 180000,
+    id: "silver",
+    name: "Silver Plan",
+    description: "Best balance of affordability and complete protection",
+    price: 465000,
+    features: [
+      "Unlimited building coverage",
+      "Extended loss of rent period",
+      "Comprehensive tenant liability",
+      "All perils coverage",
+      "Legal expense coverage",
+      "24/7 claims support",
+    ],
+  },
+  {
+    id: "gold",
+    name: "Gold Plan",
+    description: "Provides even with higher limits for valuables and more",
+    price: 685000,
+    features: [
+      "Unlimited building coverage",
+      "Extended loss of rent period",
+      "Comprehensive tenant liability",
+      "All perils coverage",
+      "Legal expense coverage",
+      "24/7 claims support",
+    ],
+  },
+  {
+    id: "platinum",
+    name: "Platinum Plan",
+    description: "All-round protection for high-value homes and possessions",
+    price: 795000,
     features: [
       "Unlimited building coverage",
       "Extended loss of rent period",
@@ -111,7 +139,7 @@ export default function LandlordPolicyPage() {
           <GenericStepIndicator currentStep={currentStep} steps={STEPS} />
 
           {/* Step Content */}
-          <div className="transition-all duration-300 mt-8">
+          <div className="transition-all duration-300 max-w-[920px] mx-auto mt-8">
             {currentStep === 1 && (
               <Step1ChoosePlan<LandlordPolicyFormData>
                 plans={LANDLORD_PLANS}
@@ -119,8 +147,9 @@ export default function LandlordPolicyPage() {
                 priceLabel="Annual Premium"
                 onSelect={handleSelectPlan}
                 onContinue={handleContinueStep1}
-                title="Choose the Right Landlord Cover"
-                description="Protect your rental property and investment with our comprehensive landlord insurance"
+                title="Choose the Right Cover for Your Home"
+                description="Compare our flexible householder plans and find one that fits your home, your lifestyle, and your budget"
+                insuranceType="landlord-policy"
               />
             )}
 
@@ -152,7 +181,9 @@ export default function LandlordPolicyPage() {
                 summaryRows={[
                   {
                     label: "Full Name:",
-                    value: `${formData.firstName} ${formData.surname}`.trim() || "N/A",
+                    value:
+                      `${formData.firstName} ${formData.surname}`.trim() ||
+                      "N/A",
                   },
                   { label: "Insurance Type:", value: "Landlord Insurance" },
                   {
@@ -180,7 +211,10 @@ export default function LandlordPolicyPage() {
             {currentStep === 4 && (
               <Step4PolicyDocument
                 policyNumber="KA-09795170"
-                fullName={`${formData.firstName} ${formData.surname}`.trim() || "Landlord Name"}
+                fullName={
+                  `${formData.firstName} ${formData.surname}`.trim() ||
+                  "Landlord Name"
+                }
                 insuranceType="Landlord Insurance"
                 productName={getPlanLabel(formData.selectedPlan)}
                 premiumPaid={formatUsd(formData.selectedPlanPrice || 45000)}

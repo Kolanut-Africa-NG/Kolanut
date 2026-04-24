@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 const HERO_IMAGE =
-  "/images/home-insurance-hero.png";
+  "/images/property.jpg";
 
 export default function PropertyInsurancePage() {
    const products = [
@@ -17,28 +17,33 @@ export default function PropertyInsurancePage() {
       title: "Tenant Policy",
       description: "Protect household items and personal effects.",
       href: "/property-insurance/tenant-policy",
+      image: "/images/tenant.png",
     },
     {
       title: "Homeowner Policy",
       description: "Full protection for building, contents, and liabilities",
       href: "/property-insurance/homeowner-policy",
+      image: "/images/homeowner.png",
     },
     {
       title: "Landlord's Policy",
       description: "Covers building, loss of rent and tenant-related risks",
       href: "/property-insurance/landlord-policy",
+      image: "/images/landlord.png",
     },
     {
       title: "Fire And Allied Perils",
       description:
         "Protect your properties from damage caused by fire and allied perils.",
       href: "/property-insurance/fire-and-allied-perils",
+      image: "/images/fire.png",
     },
     {
       title: "Burglary Insurance",
       description:
         "Get coverage for damage or stolen properties in the event of theft.",
       href: "/property-insurance/burglary-insurance",
+      image: "/images/burglary.png",
     },
   ];
   return (

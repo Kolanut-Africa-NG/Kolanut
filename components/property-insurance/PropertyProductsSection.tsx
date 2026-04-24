@@ -19,6 +19,7 @@ interface Product {
   title: string;
   description: string;
   href: string;
+  image?: string;
 }
 
 
@@ -44,7 +45,7 @@ export default function PropertyProductsSection( { products }: { products: Produ
 
         {/* Products grid — 3 cols, 5 items (last row has 2) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map(({ title, description, href }, index) => (
+          {products.map(({ title, description, href, image }, index) => (
             <motion.div
               key={title}
               variants={itemVariants}
@@ -62,7 +63,7 @@ export default function PropertyProductsSection( { products }: { products: Produ
                 {/* Card image */}
                 <div className="relative h-[240px] lg:h-[300px] w-full overflow-hidden rounded-tl-lg rounded-tr-lg">
                   <Image
-                    src="/images/property-product.png"
+                    src={image || "/images/property-product.png"}
                     alt={title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -22,6 +22,7 @@ interface Step1ChoosePlanProps<T extends Record<string, any>> {
   onBack?: () => void;
   title?: string;
   description?: string;
+  insuranceType?: string;
 }
 
 export default function Step1ChoosePlan<T extends Record<string, any>>({
@@ -33,6 +34,7 @@ export default function Step1ChoosePlan<T extends Record<string, any>>({
   onBack,
   title = "Choose the Right Cover",
   description = "Compare our flexible plans and find one that fits your needs and budget",
+  insuranceType,
 }: Step1ChoosePlanProps<T>) {
   const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
 
@@ -56,12 +58,13 @@ export default function Step1ChoosePlan<T extends Record<string, any>>({
             onSelect={() => handleSelectPlan(plan)}
             formatPrice={formatPrice}
             priceLabel={priceLabel}
+            insuranceType={insuranceType}
           />
         ))}
       </div>
 
       {/* Navigation */}
-      <StepNavigation onBack={onBack} onContinue={onContinue} />
+      <StepNavigation onBack={onBack} />
     </StepLayout>
   );
 }
