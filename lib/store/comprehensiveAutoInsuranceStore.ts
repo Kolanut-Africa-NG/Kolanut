@@ -36,9 +36,9 @@ interface ComprehensiveAutoInsuranceStore {
   currentStep: number;
   formData: ComprehensiveAutoInsuranceFormData;
   setStep: (step: number) => void;
-  updateField: <K extends keyof ComprehensiveAutoInsuranceFormData>(
-    field: K,
-    value: ComprehensiveAutoInsuranceFormData[K]
+  updateField: (
+    field: keyof ComprehensiveAutoInsuranceFormData,
+    value: string | number
   ) => void;
   reset: () => void;
 }
@@ -76,8 +76,8 @@ export const useComprehensiveAutoInsuranceStore = create<ComprehensiveAutoInsura
   formData: initialFormData,
   setStep: (step) => set({ currentStep: step }),
   updateField: (field, value) =>
-    set((state) => ({
-      formData: { ...state.formData, [field]: value },
-    })),
+     set((state) => ({
+       formData: { ...state.formData, [field]: value },
+     })),
   reset: () => set({ currentStep: 1, formData: initialFormData }),
 }));
