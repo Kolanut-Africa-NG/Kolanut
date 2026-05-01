@@ -12,6 +12,7 @@ import {
   LogOut,
   Home,
   HelpCircle,
+  Shield,
   Banknote,
   AlertTriangle,
   X,
@@ -32,8 +33,13 @@ const navItems = [
   { label: "Dashboard", icon: <LayoutGrid />, href: "/customer/dashboard" },
   {
     label: "Purchased Premiums",
-    icon: <ShoppingBag />,
+    icon: <Shield />,
     href: "/customer/purchased-premium",
+  },
+  {
+    label: "Claims",
+    icon: <ShoppingBag />,
+    href: "#",
   },
   { label: "Transactions", icon: <Banknote />, href: "/customer/transactions" },
 ];
@@ -162,7 +168,7 @@ export default function CustomerSidebar() {
               style={{ color: "#ffffff", fontSize: 15, fontWeight: 400 }}
             >
               <Settings />
-              Settings
+             Account
             </Link>
 
             <div className="mt-auto pt-4 px-4">
@@ -324,7 +330,7 @@ export default function CustomerSidebar() {
           >
             <Settings />
           </span>
-          Settings
+          Account
         </Link>
 
         {/* Divider + Logout */}

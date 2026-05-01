@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 const CATEGORIES = [
   "Home Insurance",
@@ -17,12 +18,26 @@ export default function AdminFaqsPage() {
   const [activeCategory, setActiveCategory] =
     useState<Category>("Home Insurance");
 
-  const recentPremiums = Array(6).fill({
-    policyNumber: "KA-09795170",
-    insuranceType: "International Travel Insurance",
-    premiumPaid: "$5,110",
-    datePurchased: "12/8/2025",
-  });
+  const recentPremiums = [
+    {
+      policyNumber: "KA-09795170",
+      insuranceType: "Tenant Policy Insurance",
+      premiumPaid: "N10,000",
+      datePurchased: "12/8/2025",
+    },
+    {
+      policyNumber: "KA-09795170",
+      insuranceType: "Landlord’s Policy Insurance",
+      premiumPaid: "N10,000",
+      datePurchased: "12/8/2025",
+    },
+    {
+      policyNumber: "KA-09795170",
+      insuranceType: "Comprehensive Auto Insurance",
+      premiumPaid: "N10,000",
+      datePurchased: "12/8/2025",
+    },
+  ];
   return (
     <div className="flex flex-col gap-4">
       {/* Header card */}
@@ -161,13 +176,17 @@ export default function AdminFaqsPage() {
                   {premium.datePurchased}
                 </p>
               </div>
-
-              <Button
-                variant="outline"
-                className="w-full border-[#AF060D] text-[#AF060D] hover:bg-red-50 hover:text-red-700 rounded-full text-sm font-semibold h-10 mt-1"
+              <Link
+                href={`/customer/purchased-premium/${premium.policyNumber}`}
+                passHref
               >
-                View Details
-              </Button>
+                <Button
+                  variant="outline"
+                  className="w-full border-[#AF060D] text-[#AF060D] hover:bg-red-50 hover:text-red-700 rounded-full text-sm font-semibold h-10 mt-1"
+                >
+                  View Details
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         ))}

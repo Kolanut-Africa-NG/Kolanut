@@ -15,7 +15,7 @@ import { States } from "@/utils/states";
 
 interface PersonalInfoFields {
   firstName?: string;
-  surname?: string;
+  lastname?: string;
   email?: string;
   phone?: string;
   dateOfBirth?: string;
@@ -65,7 +65,7 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
     if (personalFields) {
       const personalValid =
         personalFields.firstName?.trim() &&
-        personalFields.surname?.trim() &&
+        personalFields.lastname?.trim() &&
         personalFields.email?.trim() &&
         personalFields.phone?.trim() &&
         personalFields.dateOfBirth?.trim() &&
@@ -114,10 +114,10 @@ export default function Step2ProvideDetails<T extends Record<string, any>>({
                 onChange={(v) => onUpdate("firstName" as keyof T, v)}
               />
               <FormInput
-                label="Surname"
+                label="Last Name"
                 placeholder="Enter"
-                value={personalFields.surname || ""}
-                onChange={(v) => onUpdate("surname" as keyof T, v)}
+                value={personalFields.lastname || ""}
+                onChange={(v) => onUpdate("lastname" as keyof T, v)}
               />
             </div>
 

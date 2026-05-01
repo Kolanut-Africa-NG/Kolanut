@@ -6,7 +6,7 @@ export interface TenantPolicyFormData {
   selectedPlanPrice: number;
   // Step 2
   firstName: string;
-  surname: string;
+  lastname: string;
   email: string;
   phone: string;
   state: string;
@@ -31,7 +31,7 @@ const initialFormData: TenantPolicyFormData = {
   selectedPlan: '',
   selectedPlanPrice: 0,
   firstName: '',
-  surname: '',
+  lastname: '',
   email: '',
   phone: '',
   state: '',

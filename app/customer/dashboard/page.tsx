@@ -1,32 +1,27 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Calculator,
-  ShoppingBag,
-  FileText,
-  ChevronRight,
-  User,
-} from "lucide-react";
+import { Shield, UserLock, FileText, ChevronRight, User } from "lucide-react";
 
 const quickLinks = [
   {
-    icon: Calculator,
+    icon: Shield,
     title: "Calculate premium",
     description: "Get a quote for a new home Insurance.",
     bg: "bg-[#FEF2F2] border border-[#FEE2E2]",
     iconColor: "text-[#AF060D] bg-[#FEE2E2]",
   },
   {
-    icon: ShoppingBag,
+    icon: FileText,
     title: "Purchased Premiums",
     description: "View all my your available properties",
     bg: "bg-[#F0F8FF] border border-[#DBEEFF]",
     iconColor: "text-[#005AAD] bg-[#DBEEFF]",
   },
   {
-    icon: FileText,
+    icon: UserLock,
     title: "Make a claim",
     description: "Make a claim for your property",
     bg: "bg-[#F0FDF4] border border-[#BBF7D0]",
@@ -34,12 +29,26 @@ const quickLinks = [
   },
 ];
 
-const recentPremiums = Array(6).fill({
-  policyNumber: "KA-09795170",
-  insuranceType: "International Travel Insurance",
-  premiumPaid: "$5,110",
-  datePurchased: "12/8/2025",
-});
+const recentPremiums = [
+  {
+    policyNumber: "KA-09795170",
+    insuranceType: "Tenant Policy Insurance",
+    premiumPaid: "N10,000",
+    datePurchased: "12/8/2025",
+  },
+  {
+    policyNumber: "KA-09795170",
+    insuranceType: "Landlord’s Policy Insurance",
+    premiumPaid: "N10,000",
+    datePurchased: "12/8/2025",
+  },
+  {
+    policyNumber: "KA-09795170",
+    insuranceType: "Comprehensive Auto Insurance",
+    premiumPaid: "N10,000",
+    datePurchased: "12/8/2025",
+  },
+];
 
 export default function DashboardPage() {
   return (
@@ -79,7 +88,9 @@ export default function DashboardPage() {
                   key={link.title}
                   className={`${link.bg} rounded-[8px] px-4 py-6 flex items-center gap-4 text-left hover:opacity-90 transition-opacity w-full`}
                 >
-                  <div className={`${link.iconColor} h-8 w-8 rounded-full flex justify-center items-center`}>
+                  <div
+                    className={`${link.iconColor} h-8 w-8 rounded-full flex justify-center items-center`}
+                  >
                     <Icon className={`h-5 w-5 `} />
                   </div>
                   <div>
@@ -143,12 +154,17 @@ export default function DashboardPage() {
                     </p>
                   </div>
 
-                  <Button
-                    variant="outline"
-                    className="w-full border-[#AF060D] text-[#AF060D] hover:bg-red-50 hover:text-red-700 rounded-full text-sm font-semibold h-10 mt-1"
+                  <Link
+                    href={`/customer/purchased-premium/${premium.policyNumber}`}
+                    passHref
                   >
-                    View Details
-                  </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full border-[#AF060D] text-[#AF060D] hover:bg-red-50 hover:text-red-700 rounded-full text-sm font-semibold h-10 mt-1"
+                    >
+                      View Details
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}

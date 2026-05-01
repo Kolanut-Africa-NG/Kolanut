@@ -157,7 +157,7 @@ export default function LandlordPolicyPage() {
               <Step2ProvideDetails<LandlordPolicyFormData>
                 personalFields={{
                   firstName: formData.firstName,
-                  surname: formData.surname,
+                  lastname: formData.lastname,
                   email: formData.email,
                   phone: formData.phone,
                   dateOfBirth: formData.dateOfBirth,
@@ -182,7 +182,7 @@ export default function LandlordPolicyPage() {
                   {
                     label: "Full Name:",
                     value:
-                      `${formData.firstName} ${formData.surname}`.trim() ||
+                      `${formData.firstName} ${formData.lastname}`.trim() ||
                       "N/A",
                   },
                   { label: "Insurance Type:", value: "Landlord Insurance" },
@@ -212,7 +212,7 @@ export default function LandlordPolicyPage() {
               <Step4PolicyDocument
                 policyNumber="KA-09795170"
                 fullName={
-                  `${formData.firstName} ${formData.surname}`.trim() ||
+                  `${formData.firstName} ${formData.lastname}`.trim() ||
                   "Landlord Name"
                 }
                 insuranceType="Landlord Insurance"

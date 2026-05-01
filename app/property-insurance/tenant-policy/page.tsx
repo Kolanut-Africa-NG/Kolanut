@@ -148,7 +148,7 @@ export default function TenantPolicyPage() {
               <Step2ProvideDetails<TenantPolicyFormData>
                 personalFields={{
                   firstName: formData.firstName,
-                  surname: formData.surname,
+                  lastname: formData.lastname,
                   email: formData.email,
                   phone: formData.phone,
                   dateOfBirth: formData.dateOfBirth,
@@ -171,7 +171,7 @@ export default function TenantPolicyPage() {
                   {
                     label: "Full Name:",
                     value:
-                      `${formData.firstName} ${formData.surname}`.trim() ||
+                      `${formData.firstName} ${formData.lastname}`.trim() ||
                       "N/A",
                   },
                   { label: "Insurance Type:", value: "Home Insurance" },
@@ -204,7 +204,7 @@ export default function TenantPolicyPage() {
               <Step4PolicyDocument
                 policyNumber="KA-09795170"
                 fullName={
-                  `${formData.firstName} ${formData.surname}`.trim() ||
+                  `${formData.firstName} ${formData.lastname}`.trim() ||
                   "Policy Holder"
                 }
                 insuranceType="Home Insurance"

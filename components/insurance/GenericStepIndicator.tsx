@@ -56,7 +56,7 @@ export default function GenericStepIndicator({
                 </div>
                 {/* Label */}
                 <span
-                  className={`text-sm font-normal whitespace-nowrap ${
+                  className={`text-sm font-normal  whitespace-nowrap ${
                     isCompleted || isCurrent
                       ? "text-[#161616]"
                       : "text-[#4b5563]"

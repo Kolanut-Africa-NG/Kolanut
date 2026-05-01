@@ -82,11 +82,11 @@ export default function TransactionDetailsPage({
       {/* Top Nav */}
       <div className=" pb-4">
         <button
-          onClick={() => router.push("/customer/transactions")}
+          onClick={() => router.push("/customer/purchased-premium")}
           className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-800 transition-colors font-medium"
         >
           <ChevronLeft className="w-4 h-4" />
-         Back to Transactions
+         Back to Premiums
         </button>
       </div>
 
