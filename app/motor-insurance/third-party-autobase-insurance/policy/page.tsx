@@ -68,14 +68,16 @@ export default function ComprehensiveAutoInsurancePolicyPage() {
 
           {/* Step Content */}
           <div className="transition-all duration-300 max-w-[920px] mx-auto mt-8">
-            {currentStep === 1 && (
-              <MotorInsuranceStep2ProvideDetails
-                formData={formData}
-                onUpdate={updateField}
-                onContinue={handleContinueStep2}
-                onBack={handleBack}
-              />
-            )}
+             {currentStep === 1 && (
+               <MotorInsuranceStep2ProvideDetails
+                 formData={formData}
+                 onUpdate={(field, value) =>
+                   updateField(field as keyof ComprehensiveAutoInsuranceFormData, value)
+                 }
+                 onContinue={handleContinueStep2}
+                 onBack={handleBack}
+               />
+             )}
 
             {currentStep === 2 && (
               <Step3ReviewPay

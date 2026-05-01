@@ -159,20 +159,26 @@ export default function HomeownerPolicyPage() {
 
             {currentStep === 2 && (
               <Step2ProvideDetails<HomeownerPolicyFormData>
-                personalFields={{
-                  firstName: formData.firstName,
-                  surname: formData.surname,
-                  email: formData.email,
-                  phone: formData.phone,
-                  dateOfBirth: formData.dateOfBirth,
-                  nin: formData.nin,
-                  state: formData.state,
-                  city: formData.city,
-                }}
+                 personalFields={{
+                   firstName: formData.firstName,
+                   lastname: formData.surname,
+                   email: formData.email,
+                   phone: formData.phone,
+                   dateOfBirth: formData.dateOfBirth,
+                   nin: formData.nin,
+                   state: formData.state,
+                   city: formData.city,
+                 }}
                 locationFields={{
                   address: formData.address,
                 }}
-                onUpdate={updateField}
+                 onUpdate={(field, value) => {
+                   const fieldName = (field as string) === "lastname" ? "surname" : field;
+                   updateField(
+                     fieldName as keyof HomeownerPolicyFormData,
+                     value
+                   );
+                 }}
                 onContinue={handleContinueStep2}
                 onBack={handleBack}
               />
