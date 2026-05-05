@@ -8,22 +8,22 @@ import { Shield, UserLock, FileText, ChevronRight, User } from "lucide-react";
 const quickLinks = [
   {
     icon: Shield,
-    title: "Calculate premium",
-    description: "Get a quote for a new home Insurance.",
+    title: "Purchase Policy",
+    description: "Purchase an insurance policy",
     bg: "bg-[#FEF2F2] border border-[#FEE2E2]",
     iconColor: "text-[#AF060D] bg-[#FEE2E2]",
   },
   {
     icon: FileText,
-    title: "Purchased Premiums",
-    description: "View all my your available properties",
+    title: "Your Policies",
+    description: "View all your purchased policies",
     bg: "bg-[#F0F8FF] border border-[#DBEEFF]",
     iconColor: "text-[#005AAD] bg-[#DBEEFF]",
   },
   {
     icon: UserLock,
     title: "Make a claim",
-    description: "Make a claim for your property",
+    description: "File a claim on your policy",
     bg: "bg-[#F0FDF4] border border-[#BBF7D0]",
     iconColor: "text-[#005AAD] bg-[#DBEEFF]",
   },

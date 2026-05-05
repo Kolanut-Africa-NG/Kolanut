@@ -12,6 +12,7 @@ export default function CustomerSettingsPage() {
   const [fullName, setFullName] = useState("Mauteen Adeleke");
   const [email, setEmail] = useState("mauteenadeleke@gmail.com");
   const [phone, setPhone] = useState("+234 812 345 6789");
+  const [nin, setNin] = useState("738593029482");
 
   // Password state
   const [currentPassword, setCurrentPassword] = useState("");
@@ -149,6 +150,18 @@ export default function CustomerSettingsPage() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 outline-none focus:border-red-400 focus:ring-2 focus:ring-red-100 transition"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-sm text-gray-600" htmlFor="phone">
+                  NIN
+                </label>
+                <input
+                  id="number"
+                  type="number"
+                  value={nin}
+                  onChange={(e) => setNin(e.target.value)}
                   className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 outline-none focus:border-red-400 focus:ring-2 focus:ring-red-100 transition"
                 />
               </div>
